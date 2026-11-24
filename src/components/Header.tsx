@@ -70,7 +70,7 @@ export default function Header() {
           a.focus()
         }
       }
-      const mq = window.matchMedia('(min-width: 768px)')
+      const mq = window.matchMedia('(min-width: 1280px)')
       const onMq = () => mq.matches && setOpen(false)
       document.addEventListener('keydown', onKey)
       mq.addEventListener('change', onMq)
@@ -106,7 +106,7 @@ export default function Header() {
           hide ? '-translate-y-full' : 'translate-y-0'
         } ${scrolled || open ? 'border-line bg-paper/90 backdrop-blur' : 'border-transparent bg-transparent'}`}
       >
-        <div className={`container-x flex items-center justify-between gap-4 transition-[height] duration-300 ${scrolled ? 'h-16' : 'h-16 md:h-20'}`}>
+        <div className={`container-x flex items-center justify-between gap-4 transition-[height] duration-300 ${scrolled ? 'h-16' : 'h-16 xl:h-20'}`}>
           <Link to="/" aria-label="noesis craft" className="group flex shrink-0 items-center gap-2.5">
             <img src="/logos/master.svg" alt="" className="h-10 w-10 shrink-0 transition-transform duration-500 ease-soft group-hover:-rotate-6 md:h-11 md:w-11" width={44} height={44} />
             <span className="hidden text-lg font-semibold tracking-tight text-ink min-[340px]:inline md:text-xl" aria-hidden="true">
@@ -114,7 +114,7 @@ export default function Header() {
             </span>
           </Link>
 
-          <nav aria-label={t('nav.main')} className="hidden items-center gap-4 md:flex lg:gap-6">
+          <nav aria-label={t('nav.main')} className="hidden items-center gap-4 whitespace-nowrap xl:flex xl:gap-6">
             {links.map((l) => (
               <NavLink key={l.to} to={l.to} end={l.end} className="nav-link pencil-link">
                 {l.label}
@@ -132,7 +132,7 @@ export default function Header() {
             <LangSwitch />
           </nav>
 
-          <div className="flex shrink-0 items-center gap-2 md:hidden">
+          <div className="flex shrink-0 items-center gap-2 xl:hidden">
             <LangSwitch />
             <button
               ref={btnRef}
@@ -153,7 +153,7 @@ export default function Header() {
         </div>
       </header>
 
-      <nav id="mobile-nav" ref={panelRef} aria-label={t('nav.main')} data-open={open} inert={!open} className="menu-panel md:hidden">
+      <nav id="mobile-nav" ref={panelRef} aria-label={t('nav.main')} data-open={open} inert={!open} className="menu-panel xl:hidden">
         <ul className="container-x flex flex-col pt-6">
           {[...links, { to: '/#sobre', label: t('nav.about'), end: false, soon: false }].map((l, i) => {
             const num = String(i + 1).padStart(2, '0')

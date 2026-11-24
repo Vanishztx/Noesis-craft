@@ -214,6 +214,7 @@ main:focus-visible {
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--color-muted);
+    white-space: nowrap;
     transition: color 0.2s;
   }
   .nav-link:hover,
@@ -779,6 +780,7 @@ a.kid-card.kid-live {
   font-weight: 600;
 }
 .nav-soon {
+  white-space: nowrap;
   margin-left: 0.4rem;
   padding: 0.05rem 0.4rem;
   border: 1px solid currentColor;

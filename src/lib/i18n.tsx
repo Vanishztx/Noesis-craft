@@ -19,7 +19,7 @@ const dict = {
   'soon.form.sent': { pt: 'Abrimos o teu programa de e-mail para enviares o pedido. Se não abriu, escreve para noesisteaches@gmail.com.', en: 'We opened your email app so you can send the request. If it did not open, write to noesisteaches@gmail.com.' },
   'soon.form.privacy': { pt: 'Usamos o teu e-mail só para te avisar deste lançamento. Podes pedir para o apagar em noesisteaches@gmail.com.', en: 'We use your email only to tell you about this launch. You can ask us to delete it at noesisteaches@gmail.com.' },
   'soon.form.adult': { pt: 'Se és criança, pede a um adulto responsável para escrever o e-mail dele.', en: 'If you are a child, ask a parent or guardian to enter their email.' },
-  'kids.count': { pt: '{books} livro(s) e {themes} tema(s) para esta idade.', en: '{books} book(s) and {themes} theme(s) for this age.' },
+  'kids.count': { pt: '{books} livro(s), {themes} tema(s) e {topics} tópico(s) para: {age}.', en: '{books} book(s), {themes} theme(s) and {topics} topic(s) for: {age}.' },
   'soon.form.saved': { pt: 'Anotado neste dispositivo.', en: 'Noted on this device.' },
 
   'kids.eyebrow': { pt: 'infantil', en: 'kids' },

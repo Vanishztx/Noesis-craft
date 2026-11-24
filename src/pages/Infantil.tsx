@@ -32,6 +32,8 @@ export default function Infantil() {
   )
   const allKids = useMemo(() => (state.status === 'ready' ? state.data.filter((p) => p.category === 'infantil') : []), [state])
   const statusText = t('kids.count').replace('{books}', String(kidsProducts.length)).replace('{themes}', String(themes.length))
+    .replace('{topics}', String(themes.reduce((n, th) => n + th.shown.length, 0)))
+    .replace('{age}', pick(AGE_FILTERS.find((a) => a.id === age)!.label))
   const hero = state.status === 'ready' ? state.data.find((p) => p.category === 'infantil') : undefined
   const heroCover = hero ? coverOf(hero, lang) : undefined
 
