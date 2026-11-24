@@ -26,8 +26,8 @@ const dict = {
   'kids.title.a': { pt: 'Aprender e colorir,', en: 'Learn and color,' },
   'kids.title.b': { pt: 'a brincar.', en: 'while playing.' },
   'kids.lead': {
-    pt: 'Livros para crianças dos 3 anos em diante: letras, números, descobertas, artes e as datas de Cabo Verde. Descarrega e imprime em casa.',
-    en: 'Books for children from age 3 up: letters, numbers, discoveries, arts and Cape Verde dates. Download and print at home.',
+    pt: 'Livros para crianças dos 3 anos em diante: letras, números, descobertas, artes e datas e celebrações. Descarrega e imprime em casa.',
+    en: 'Books for children from age 3 up: letters, numbers, discoveries, arts and dates and celebrations. Download and print at home.',
   },
   'kids.cta.books': { pt: 'Ver livros', en: 'See books' },
   'kids.cta.themes': { pt: 'Ver temas', en: 'See themes' },
@@ -76,8 +76,8 @@ const dict = {
   'product.main': { pt: 'Em destaque', en: 'Featured' },
   'products.more': { pt: 'Mais da oficina', en: 'More from the workshop' },
   'footer.top': { pt: 'Voltar ao topo', en: 'Back to top' },
-  'footer.made': { pt: 'Feito com cuidado em Cabo Verde', en: 'Made with care in Cape Verde' },
-  'footer.seal': { pt: 'Selo NOESIS Cabo Verde', en: 'NOESIS Cape Verde seal' },
+  'footer.made': { pt: 'Feito com cuidado', en: 'Made with care' },
+  'footer.seal': { pt: 'Selo NOESIS craft', en: 'NOESIS craft seal' },
   'nav.menu.open': { pt: 'Abrir menu', en: 'Open menu' },
   'nav.menu.close': { pt: 'Fechar menu', en: 'Close menu' },
 
@@ -98,8 +98,8 @@ const dict = {
   'about.eyebrow': { pt: 'a marca', en: 'the brand' },
   'about.title': { pt: 'Feito à mão, pensado a régua', en: 'Handmade, ruler straight' },
   'about.p1': {
-    pt: 'A noesis craft é a área de criação e design da NOESIS, um estúdio de Cabo Verde. Aqui nascem materiais criativos, a começar por livros de colorir.',
-    en: 'noesis craft is the creation and design arm of NOESIS, a studio from Cape Verde. This is where creative materials are born, starting with coloring books.',
+    pt: 'A noesis craft é a área de criação e design da NOESIS, um estúdio criativo. Aqui nascem materiais criativos, a começar por livros de colorir.',
+    en: 'noesis craft is the creation and design arm of NOESIS, a creative studio. This is where creative materials are born, starting with coloring books.',
   },
   'about.p2': {
     pt: 'O símbolo guarda uma ponta de lápis: tudo começa num traço. Cada produto é desenhado com poucas linhas, formas claras e atenção ao detalhe.',

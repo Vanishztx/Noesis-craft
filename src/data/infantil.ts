@@ -54,8 +54,8 @@ export const THEMES: ThemeInfo[] = [
     id: 'descobertas',
     name: { pt: 'Descobertas', en: 'Discoveries' },
     blurb: {
-      pt: 'Ciências para curiosos: o mar, as plantas, o corpo e os animais de Cabo Verde.',
-      en: 'Science for curious minds: the sea, plants, the body and the animals of Cape Verde.',
+      pt: 'Ciências para curiosos: o mar, as plantas, o corpo e os animais.',
+      en: 'Science for curious minds: the sea, plants, the body and animals.',
     },
     glyph: '?!',
     tone: 'mint',
@@ -81,17 +81,18 @@ export const THEMES: ThemeInfo[] = [
   },
   {
     id: 'datas',
-    name: { pt: 'Datas', en: 'Special dates' },
+    name: { pt: 'Datas e celebrações', en: 'Dates and celebrations' },
     blurb: {
-      pt: 'Histórias e cores das datas de Cabo Verde: 5 de Julho, Dia da Criança, a morna e a Cesária Évora.',
-      en: 'Stories and colors for Cape Verde dates: 5 July, Children’s Day, morna and Cesária Évora.',
+      pt: 'Histórias e cores dos dias especiais: aniversários, estações do ano, festas e tradições.',
+      en: 'Stories and colors for special days: birthdays, seasons, festivals and traditions.',
     },
-    glyph: '5/7',
+    glyph: '★',
     tone: 'lilac',
     topics: [
-      { label: { pt: '5 de Julho', en: '5 July' }, ages: ['5-6', '7+'] },
-      { label: { pt: 'Dia da Criança', en: 'Children’s Day' }, ages: ['3-4', '5-6', '7+'] },
-      { label: { pt: 'Morna e Cesária Évora', en: 'Morna and Cesária Évora' }, ages: ['5-6', '7+'] },
+      { label: { pt: 'Aniversários', en: 'Birthdays' }, ages: ['3-4', '5-6', '7+'] },
+      { label: { pt: 'Estações do ano', en: 'Seasons' }, ages: ['3-4', '5-6', '7+'] },
+      { label: { pt: 'Festas e tradições', en: 'Festivals and traditions' }, ages: ['5-6', '7+'] },
+      { label: { pt: 'Dias especiais', en: 'Special days' }, ages: ['5-6', '7+'] },
     ],
   },
 ]

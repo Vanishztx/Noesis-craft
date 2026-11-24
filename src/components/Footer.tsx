@@ -13,7 +13,7 @@ function Seal() {
           <path id="seal-ring" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0" />
         </defs>
         <text fill="currentColor" fontSize="10.5" fontWeight="600" letterSpacing="3.2">
-          <textPath href="#seal-ring">NOESIS · CABO VERDE · NOESIS · CABO VERDE ·</textPath>
+          <textPath href="#seal-ring">NOESIS · CRAFT · NOESIS · CRAFT ·</textPath>
         </text>
       </g>
       <circle cx="60" cy="60" r="22" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 4" />
