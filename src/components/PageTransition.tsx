@@ -23,7 +23,7 @@ const DURATION = 0.7
 /** Aba a que um caminho pertence; produtos herdam a categoria do produto. */
 function tabOf(pathname: string, products: Product[]): Tab {
   const p = pathname.replace(/\/+$/, '') || '/'
-  if (p === '/infantil') return 'infantil'
+  if (p === '/infantil' || p.startsWith('/infantil/')) return 'infantil'
   if (p === '/planners') return 'planners'
   if (p === '/templates') return 'templates'
   const m = p.match(/^\/produtos\/([^/]+)$/)

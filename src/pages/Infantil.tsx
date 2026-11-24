@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useI18n } from '../lib/i18n'
 import { useProducts } from '../data/useProducts'
 import { AGES, THEMES } from '../data/infantil'
-import type { AgeRange } from '../data/types'
+import type { AgeRange, InfantilTheme } from '../data/types'
 import { useReveal } from '../lib/useReveal'
 import { useTitle } from '../lib/useTitle'
 import { coverOf } from '../lib/format'
@@ -13,6 +13,9 @@ import Torn from '../components/Torn'
 import { ErrorPanel, LoadingGrid } from '../components/StateViews'
 
 const AGE_FILTERS = [{ id: 'all' as const, label: { pt: 'Todas', en: 'All' } }, ...AGES]
+const THEME_PATHS: Partial<Record<InfantilTheme, string>> = {
+  artes: '/infantil/artes',
+}
 
 function Cloud({ className = '' }: { className?: string }) {
   return (
@@ -131,8 +134,10 @@ export default function Infantil() {
 
         <ul className="kid-themes mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2" data-n={themes.length}>
           {themes.map((th, i) => {
+            const categoryPath = THEME_PATHS[th.id]
             const liveProduct = allKids.find((p) => p.theme === th.id)
-            const live = Boolean(liveProduct)
+            const live = Boolean(categoryPath || liveProduct)
+            const targetPath = categoryPath ?? (liveProduct ? `/produtos/${liveProduct.slug}` : null)
             const body = (
               <>
                 <div className="kid-card-head">
@@ -155,7 +160,7 @@ export default function Infantil() {
                 <span className={`kid-card-foot ${live ? 'kid-go' : ''}`}>
                   {live ? (
                     <>
-                      {t('kids.card.go')}
+                      {categoryPath ? t('kids.card.explore').replace('{theme}', pick(th.name)) : t('kids.card.go')}
                       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M2 9h13M10 3l6 6-6 6" stroke="currentColor" strokeWidth="2" />
                       </svg>
@@ -169,8 +174,8 @@ export default function Infantil() {
             const style = { ['--d' as string]: `${(i % 3) * 80}ms` }
             return (
               <li key={th.id} data-reveal style={style}>
-                {liveProduct ? (
-                  <Link to={`/produtos/${liveProduct.slug}`} className={`kid-card kid-live tone-${th.tone}`}>
+                {targetPath ? (
+                  <Link to={targetPath} className={`kid-card kid-live tone-${th.tone}`}>
                     {body}
                   </Link>
                 ) : (

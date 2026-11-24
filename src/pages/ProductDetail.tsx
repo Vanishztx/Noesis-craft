@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useI18n } from '../lib/i18n'
 import { useProduct, useProducts } from '../data/useProducts'
+import { THEMES } from '../data/infantil'
 import type { Product } from '../data/types'
 import { coverOf, formatCve, formatUsd, imagesFor } from '../lib/format'
 import { useReveal } from '../lib/useReveal'
@@ -10,6 +11,8 @@ import Price from '../components/Price'
 import ProductCard, { isNewProduct } from '../components/ProductCard'
 import { ErrorPanel } from '../components/StateViews'
 import NotFound from './NotFound'
+
+const ARTES_THEME = THEMES.find((th) => th.id === 'artes')!
 
 function Arrow() {
   return (
@@ -205,9 +208,39 @@ export default function ProductDetail() {
   return (
     <div ref={ref}>
       <div className="container-x pt-6 md:pt-8">
-        <Link to="/produtos" className="pencil-link inline-flex min-h-11 items-center gap-2 py-2 text-sm font-semibold">
-          <span aria-hidden="true">←</span> {t('product.back')}
-        </Link>
+        {product.category === 'infantil' && product.theme === 'artes' ? (
+          <nav aria-label={t('breadcrumb.label')}>
+            <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-semibold text-muted">
+              <li>
+                <Link to="/" className="pencil-link inline-flex min-h-11 items-center py-2 text-ink">
+                  {t('nav.home')}
+                </Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li>
+                <Link to="/infantil" className="pencil-link inline-flex min-h-11 items-center py-2 text-ink">
+                  {t('nav.kids')}
+                </Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li>
+                <Link to="/infantil/artes" className="pencil-link inline-flex min-h-11 items-center py-2 text-ink">
+                  {pick(ARTES_THEME.name)}
+                </Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li>
+                <span aria-current="page" className="inline-flex min-h-11 items-center py-2 font-bold text-ink">
+                  {pick(product.name)}
+                </span>
+              </li>
+            </ol>
+          </nav>
+        ) : (
+          <Link to="/produtos" className="pencil-link inline-flex min-h-11 items-center gap-2 py-2 text-sm font-semibold">
+            <span aria-hidden="true">←</span> {t('product.back')}
+          </Link>
+        )}
       </div>
 
       <section className="container-x grid gap-x-16 gap-y-12 pb-20 pt-4 md:grid-cols-[1fr_1fr] md:pb-28 md:pt-8">

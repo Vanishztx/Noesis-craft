@@ -9,6 +9,8 @@ const dict = {
   'nav.planners': { pt: 'Planners', en: 'Planners' },
   'nav.templates': { pt: 'Templates', en: 'Templates' },
   'title.kids': { pt: 'Infantil · livros para crianças · noesis craft', en: 'Kids · books for children · noesis craft' },
+  'title.kids.arts': { pt: 'Artes · Infantil · noesis craft', en: 'Arts · Kids · noesis craft' },
+  'breadcrumb.label': { pt: 'Navegação estrutural', en: 'Breadcrumb' },
   'soon.badge': { pt: 'Em breve', en: 'Coming soon' },
   'soon.title': { pt: 'Avisamos-te quando abrir', en: 'We will tell you when it opens' },
   'soon.text': { pt: 'Deixa o teu e-mail e recebes um aviso quando esta área abrir. Sem spam.', en: 'Leave your email and get a note when this area opens. No spam.' },
@@ -34,6 +36,7 @@ const dict = {
   'kids.age.title': { pt: 'Escolhe pela idade', en: 'Pick by age' },
   'kids.age.hint': { pt: 'Filtra os temas e os livros logo abaixo.', en: 'Filters the themes and the books right below.' },
   'kids.card.go': { pt: 'Ver o livro', en: 'See the book' },
+  'kids.card.explore': { pt: 'Explorar {theme}', en: 'Explore {theme}' },
   'kids.card.soon': { pt: 'A caminho', en: 'On the way' },
   'kids.books': { pt: 'Livros infantis', en: 'Kids books' },
   'kids.empty.title': { pt: 'Ainda não há livros para esta idade', en: 'No books for this age yet' },
@@ -44,6 +47,29 @@ const dict = {
   'kids.tag.live': { pt: 'Já disponível', en: 'Available now' },
   'kids.notify.title': { pt: 'Quer saber dos próximos livros?', en: 'Want news of the next books?' },
   'kids.notify.text': { pt: 'Diz-nos o teu e-mail e avisamos quando sair um livro novo.', en: 'Tell us your email and we will let you know when a new book is out.' },
+
+  'kids.arts.eyebrow': { pt: 'infantil · artes', en: 'kids · arts' },
+  'kids.arts.lead': {
+    pt: 'Livros de colorir e desenho guiado para soltar a imaginação, feitos para descarregar e imprimir em casa.',
+    en: 'Coloring books and guided drawing to spark imagination, made to download and print at home.',
+  },
+  'kids.arts.topics.title': { pt: 'Tópicos de Artes', en: 'Arts topics' },
+  'kids.arts.books.title': { pt: 'Livros de Artes', en: 'Arts books' },
+  'kids.arts.count': {
+    pt: '{books} livro(s) e {topics} tópico(s) de Artes para: {age}.',
+    en: '{books} book(s) and {topics} Arts topic(s) for: {age}.',
+  },
+  'kids.arts.empty.title': { pt: 'Ainda não há livros de Artes para esta idade', en: 'No Arts books for this age yet' },
+  'kids.arts.empty.text': {
+    pt: 'Estamos a desenhar mais livros de Artes. Experimenta outra idade ou deixa o teu e-mail em baixo.',
+    en: 'We are drawing more Arts books. Try another age or leave your email below.',
+  },
+  'kids.arts.more.title': { pt: 'Mais livros de Artes a caminho', en: 'More Arts books on the way' },
+  'kids.arts.more.text': {
+    pt: 'Novos livros de colorir e desenho guiado chegam em breve. Deixa o teu e-mail e avisamos-te assim que sair.',
+    en: 'New coloring and guided drawing books are coming soon. Leave your email and we will let you know as soon as one is out.',
+  },
+
   'nav.menu': { pt: 'Menu', en: 'Menu' },
   'nav.close': { pt: 'Fechar', en: 'Close' },
   'nav.main': { pt: 'Principal', en: 'Main' },
