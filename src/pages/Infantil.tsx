@@ -30,6 +30,8 @@ export default function Infantil() {
     () => THEMES.map((th) => ({ ...th, shown: th.topics.filter((tp) => age === 'all' || tp.ages.includes(age)) })).filter((th) => th.shown.length > 0),
     [age],
   )
+  const allKids = useMemo(() => (state.status === 'ready' ? state.data.filter((p) => p.category === 'infantil') : []), [state])
+  const statusText = t('kids.count').replace('{books}', String(kidsProducts.length)).replace('{themes}', String(themes.length))
   const hero = state.status === 'ready' ? state.data.find((p) => p.category === 'infantil') : undefined
   const heroCover = hero ? coverOf(hero, lang) : undefined
 
@@ -85,11 +87,14 @@ export default function Infantil() {
 
       <section id="livros" className="container-x scroll-mt-24 pt-14" aria-busy={state.status === 'loading'}>
         <h2 className="text-3xl sm:text-4xl">{t('kids.books')}</h2>
-        <div className="mt-8" aria-live="polite">
+        <p className="sr-only" role="status">
+          {state.status === 'ready' ? statusText : ''}
+        </p>
+        <div className="mt-8">
           {state.status === 'loading' && <LoadingGrid />}
           {state.status === 'error' && <ErrorPanel onRetry={reload} />}
           {state.status === 'ready' && kidsProducts.length > 0 && (
-            <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div className={`grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 ${kidsProducts.length === 1 ? 'max-w-3xl' : 'lg:grid-cols-3'}`}>
               {kidsProducts.map((p, i) => (
                 <ProductCard key={p.id} product={p} delay={i * 90} />
               ))}
@@ -110,11 +115,12 @@ export default function Infantil() {
           {t('kids.themes.title')}
         </h2>
         <p className="mt-3 max-w-xl text-muted">{t('kids.themes.lead')}</p>
-        <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="kid-themes mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {themes.map((th, i) => {
-            const live = th.id === 'artes'
-            return (
-              <li key={th.id} data-reveal style={{ ['--d' as string]: `${(i % 3) * 80}ms` }} className={`kid-card tone-${th.tone}`}>
+            const liveProduct = allKids.find((p) => p.theme === th.id)
+            const live = Boolean(liveProduct)
+            const body = (
+              <>
                 <span className="kid-glyph" aria-hidden="true">
                   {th.glyph}
                 </span>
@@ -130,6 +136,18 @@ export default function Infantil() {
                     </li>
                   ))}
                 </ul>
+              </>
+            )
+            const style = { ['--d' as string]: `${(i % 3) * 80}ms` }
+            return (
+              <li key={th.id} data-reveal style={style} className="h-full">
+                {liveProduct ? (
+                  <Link to={`/produtos/${liveProduct.slug}`} className={`kid-card kid-live tone-${th.tone}`}>
+                    {body}
+                  </Link>
+                ) : (
+                  <div className={`kid-card tone-${th.tone}`}>{body}</div>
+                )}
               </li>
             )
           })}

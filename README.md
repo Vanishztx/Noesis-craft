@@ -10,7 +10,7 @@ npm run dev      # http://localhost:5173
 npm run build    # tsc + vite build, saída em dist/
 ```
 
-Rotas: `/` (Home), `/produtos` (lista), `/produtos/:slug` (detalhe), `*` (404). Idioma PT por defeito, seletor PT/EN no topo (guardado em localStorage).
+Rotas: `/` (Home), `/produtos` (lista), `/produtos/:slug` (detalhe), `/infantil` (livros infantis por idade e tema), `/planners` e `/templates` ("Em breve" com captura de e-mail por mailto), `*` (404). Preço principal em CVE, com o valor em USD (moeda do checkout) ao lado. O `npm run build` copia `dist/index.html` para `dist/404.html` (links diretos em hosts estáticos). Idioma PT por defeito, seletor PT/EN no topo (guardado em localStorage).
 
 ## Identidade
 
@@ -58,6 +58,7 @@ type Product = {
 Configuração (`.env`, ver `.env.example`):
 
 - `VITE_PRODUCTS_URL`: se definido, `fetchProducts()` faz GET e espera `Product[]` (ou `{ "products": Product[] }`). Vazio = mocks.
+- `VITE_CONTACT_EMAIL`: destino do formulário "Em breve" (por defeito noesisteaches@gmail.com).
 - `VITE_STORE_URL`: página da loja (link no rodapé).
 - `VITE_CHECKOUT_URL_OVERRIDE`: força um checkout para todos os produtos (só testes).
 

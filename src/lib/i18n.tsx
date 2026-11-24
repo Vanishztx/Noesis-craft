@@ -16,8 +16,11 @@ const dict = {
   'soon.form.placeholder': { pt: 'nome@exemplo.com', en: 'name@example.com' },
   'soon.form.cta': { pt: 'Avisar-me', en: 'Notify me' },
   'soon.form.invalid': { pt: 'Escreve um e-mail válido.', en: 'Enter a valid email.' },
-  'soon.form.sent': { pt: 'Abrimos o teu programa de e-mail para enviares o pedido.', en: 'We opened your email app so you can send the request.' },
-  'soon.form.saved': { pt: 'Anotado neste dispositivo. O envio por e-mail ainda não está ligado.', en: 'Noted on this device. Email delivery is not connected yet.' },
+  'soon.form.sent': { pt: 'Abrimos o teu programa de e-mail para enviares o pedido. Se não abriu, escreve para noesisteaches@gmail.com.', en: 'We opened your email app so you can send the request. If it did not open, write to noesisteaches@gmail.com.' },
+  'soon.form.privacy': { pt: 'Usamos o teu e-mail só para te avisar deste lançamento. Podes pedir para o apagar em noesisteaches@gmail.com.', en: 'We use your email only to tell you about this launch. You can ask us to delete it at noesisteaches@gmail.com.' },
+  'soon.form.adult': { pt: 'Se és criança, pede a um adulto responsável para escrever o e-mail dele.', en: 'If you are a child, ask a parent or guardian to enter their email.' },
+  'kids.count': { pt: '{books} livro(s) e {themes} tema(s) para esta idade.', en: '{books} book(s) and {themes} theme(s) for this age.' },
+  'soon.form.saved': { pt: 'Anotado neste dispositivo.', en: 'Noted on this device.' },
 
   'kids.eyebrow': { pt: 'infantil', en: 'kids' },
   'kids.title.a': { pt: 'Aprender e colorir,', en: 'Learn and color,' },

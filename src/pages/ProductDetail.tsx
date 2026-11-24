@@ -161,8 +161,8 @@ function BuyBar({ product, target }: { product: Product; target: React.RefObject
     >
       <div className="mx-auto flex max-w-md items-center justify-between gap-4">
         <p className="leading-tight">
-          <span className="block text-xl font-semibold">{formatUsd(product.priceUsd, lang)} USD</span>
-          <span className="block text-xs text-muted">≈ {formatCve(product.priceCve, lang)}</span>
+          <span className="block text-xl font-semibold">{formatCve(product.priceCve, lang)}</span>
+          <span className="block text-xs text-muted">≈ {formatUsd(product.priceUsd, lang)} USD</span>
         </p>
         <a href={product.checkoutUrl} target="_blank" rel="noopener noreferrer" aria-label={t('product.buy.aria')} className="btn btn-amber !min-h-11 !px-5">
           {t('product.buy')}

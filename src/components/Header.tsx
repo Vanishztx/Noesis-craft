@@ -118,7 +118,12 @@ export default function Header() {
             {links.map((l) => (
               <NavLink key={l.to} to={l.to} end={l.end} className="nav-link pencil-link">
                 {l.label}
-                {l.soon && <span className="nav-soon">{t('soon.badge')}</span>}
+                {l.soon && (
+                  <>
+                    <span className="sr-only"> · </span>
+                    <span className="nav-soon">{t('soon.badge')}</span>
+                  </>
+                )}
               </NavLink>
             ))}
             <a href="/#sobre" className="nav-link pencil-link">
@@ -167,7 +172,12 @@ export default function Header() {
                         <span className={isActive ? 'mark' : ''} style={isActive ? { animation: 'none' } : undefined}>
                           {l.label}
                         </span>
-                        {l.soon && <span className="nav-soon">{t('soon.badge')}</span>}
+                        {l.soon && (
+                  <>
+                    <span className="sr-only"> · </span>
+                    <span className="nav-soon">{t('soon.badge')}</span>
+                  </>
+                )}
                       </>
                     )}
                   </NavLink>

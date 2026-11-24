@@ -1,4 +1,4 @@
-import { useId, useState, type FormEvent } from 'react'
+import { useId, useRef, useState, type FormEvent } from 'react'
 import { useI18n } from '../lib/i18n'
 
 /** E-mail que recebe os pedidos de aviso. Definido por VITE_CONTACT_EMAIL (sem backend por agora). */
@@ -9,6 +9,7 @@ const STORE = 'noesis-craft-notify'
 export default function EmailCapture({ topic, kids = false }: { topic: string; kids?: boolean }) {
   const { t } = useI18n()
   const id = useId()
+  const inputRef = useRef<HTMLInputElement>(null)
   const [email, setEmail] = useState('')
   const [state, setState] = useState<'idle' | 'sent' | 'saved' | 'invalid'>('idle')
 
@@ -17,12 +18,13 @@ export default function EmailCapture({ topic, kids = false }: { topic: string; k
     const v = email.trim()
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
       setState('invalid')
+      inputRef.current?.focus()
       return
     }
     try {
       const list = JSON.parse(localStorage.getItem(STORE) ?? '[]') as { email: string; topic: string }[]
       list.push({ email: v, topic })
-      localStorage.setItem(STORE, JSON.stringify(list))
+      localStorage.setItem(STORE, JSON.stringify(list.slice(-20)))
     } catch {
       /* ignore */
     }
@@ -41,9 +43,11 @@ export default function EmailCapture({ topic, kids = false }: { topic: string; k
       <label htmlFor={id} className="block text-sm font-semibold">
         {t('soon.form.label')}
       </label>
+      {kids && <p className="mt-1 text-sm text-muted">{t('soon.form.adult')}</p>}
       <div className="mt-2 flex flex-col gap-3 sm:flex-row">
         <input
           id={id}
+          ref={inputRef}
           type="email"
           inputMode="email"
           autoComplete="email"
@@ -54,19 +58,22 @@ export default function EmailCapture({ topic, kids = false }: { topic: string; k
             if (state !== 'idle') setState('idle')
           }}
           aria-invalid={state === 'invalid'}
-          aria-describedby={`${id}-msg`}
+          aria-describedby={`${id}-err ${id}-msg`}
           placeholder={t('soon.form.placeholder')}
-          className={`min-h-12 w-full flex-1 border-2 border-ink bg-white px-4 text-base ${kids ? 'rounded-2xl' : ''}`}
+          className={`email-input min-h-12 w-full flex-1 border-2 border-ink bg-white px-4 text-base ${kids ? 'rounded-2xl' : ''}`}
         />
         <button type="submit" className={`btn btn-amber ${kids ? 'btn-kid' : ''}`}>
           {t('soon.form.cta')}
         </button>
       </div>
-      <p id={`${id}-msg`} role="status" className="mt-2 min-h-5 text-sm text-muted">
+      <p id={`${id}-err`} role="alert" className="email-error mt-2 text-sm">
         {state === 'invalid' && t('soon.form.invalid')}
+      </p>
+      <p id={`${id}-msg`} role="status" className="mt-2 min-h-5 text-sm text-ink-2">
         {state === 'sent' && t('soon.form.sent')}
         {state === 'saved' && t('soon.form.saved')}
       </p>
+      <p className="mt-2 text-sm text-muted">{t('soon.form.privacy')}</p>
     </form>
   )
 }

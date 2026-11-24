@@ -72,7 +72,7 @@ export const THEMES: ThemeInfo[] = [
       pt: 'Colorir, desenhar e inventar. Aqui já vive o Cozy Friends.',
       en: 'Color, draw and invent. Cozy Friends already lives here.',
     },
-    glyph: '✎',
+    glyph: 'Ab',
     tone: 'amber',
     topics: [
       { label: { pt: 'Livros de colorir', en: 'Coloring books' }, ages: ['3-4', '5-6', '7+'] },

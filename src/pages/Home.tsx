@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { useI18n } from '../lib/i18n'
 import { useProducts } from '../data/useProducts'
 import { useReveal } from '../lib/useReveal'
-import { coverOf, formatUsd, imagesFor } from '../lib/format'
+import { coverOf, formatCve, formatUsd, imagesFor } from '../lib/format'
 import { useTitle } from '../lib/useTitle'
 import Price from '../components/Price'
 import ProductCard, { isNewProduct } from '../components/ProductCard'
@@ -53,8 +53,8 @@ function Stack() {
               aria-hidden="true"
             >
               <span className="text-2xl font-semibold leading-none sm:text-3xl">
-                {formatUsd(first.priceUsd, lang)}
-                <span className="mt-1 block text-[0.6rem] font-semibold uppercase tracking-widest text-amber">USD</span>
+                {formatCve(first.priceCve, lang)}
+                <span className="mt-1 block text-[0.6rem] font-semibold uppercase tracking-widest text-amber">≈ {formatUsd(first.priceUsd, lang)} USD</span>
               </span>
             </span>
             {isNewProduct(first) && <span className="chip absolute left-[8%] top-[78%] z-10">{t('hero.badge')}</span>}
