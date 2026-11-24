@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useI18n } from '../lib/i18n'
 import { useProduct, useProducts } from '../data/useProducts'
 import type { Product } from '../data/types'
 import { coverOf, formatCve, formatUsd, imagesFor } from '../lib/format'
 import { useReveal } from '../lib/useReveal'
+import CheckoutModal from '../components/CheckoutModal'
 import Price from '../components/Price'
 import ProductCard, { isNewProduct } from '../components/ProductCard'
 import { ErrorPanel } from '../components/StateViews'
@@ -109,7 +110,7 @@ function Gallery({ product }: { product: Product }) {
   )
 }
 
-function Ticket({ product }: { product: Product }) {
+function Ticket({ product, onBuy }: { product: Product; onBuy: () => void }) {
   const { t, pick } = useI18n()
   return (
     <div className="ticket mt-8">
@@ -118,10 +119,10 @@ function Ticket({ product }: { product: Product }) {
         {product.currency.note && <p className="mt-3 max-w-sm text-xs leading-relaxed text-muted">{pick(product.currency.note)}</p>}
       </div>
       <div className="perf p-6 sm:p-7">
-        <a href={product.checkoutUrl} target="_blank" rel="noopener noreferrer" aria-label={t('product.buy.aria')} className="btn btn-amber w-full">
+        <button type="button" onClick={onBuy} aria-haspopup="dialog" aria-label={t('product.buy.aria')} className="btn btn-amber w-full">
           {t('product.buy')}
           <Arrow />
-        </a>
+        </button>
         <p className="mt-3 text-xs text-muted">{t('product.buy.note')}</p>
       </div>
     </div>
@@ -129,7 +130,7 @@ function Ticket({ product }: { product: Product }) {
 }
 
 /** Barra de compra fixa no mobile, visivel quando o bilhete e o rodape estao fora do ecra. */
-function BuyBar({ product, target }: { product: Product; target: React.RefObject<HTMLElement | null> }) {
+function BuyBar({ product, target, onBuy }: { product: Product; target: React.RefObject<HTMLElement | null>; onBuy: () => void }) {
   const { t, lang } = useI18n()
   const [show, setShow] = useState(false)
   useEffect(() => {
@@ -164,9 +165,9 @@ function BuyBar({ product, target }: { product: Product; target: React.RefObject
           <span className="block text-xl font-semibold">{formatCve(product.priceCve, lang)}</span>
           <span className="block text-xs text-muted">≈ {formatUsd(product.priceUsd, lang)} USD</span>
         </p>
-        <a href={product.checkoutUrl} target="_blank" rel="noopener noreferrer" aria-label={t('product.buy.aria')} className="btn btn-amber !min-h-11 !px-5">
+        <button type="button" onClick={onBuy} aria-haspopup="dialog" aria-label={t('product.buy.aria')} className="btn btn-amber !min-h-11 !px-5">
           {t('product.buy')}
-        </a>
+        </button>
       </div>
     </div>
   )
@@ -179,6 +180,8 @@ export default function ProductDetail() {
   const all = useProducts().state
   const ref = useReveal<HTMLDivElement>([state.status, slug])
   const ticketRef = useRef<HTMLDivElement>(null)
+  const [buying, setBuying] = useState(false)
+  const closeBuy = useCallback(() => setBuying(false), [])
 
   const product = state.status === 'ready' ? state.data : null
   useEffect(() => {
@@ -218,7 +221,7 @@ export default function ProductDetail() {
             <h1 className="mt-4 text-4xl sm:text-6xl">{pick(product.name)}</h1>
           </div>
           <div ref={ticketRef} className="rise" style={{ ['--d' as string]: '200ms' }}>
-            <Ticket product={product} />
+            <Ticket product={product} onBuy={() => setBuying(true)} />
           </div>
 
           <div className="rise mt-12" style={{ ['--d' as string]: '300ms' }}>
@@ -272,7 +275,8 @@ export default function ProductDetail() {
         </section>
       )}
 
-      <BuyBar product={product} target={ticketRef} />
+      <BuyBar product={product} target={ticketRef} onBuy={() => setBuying(true)} />
+      <CheckoutModal product={product} open={buying} onClose={closeBuy} />
     </div>
   )
 }
