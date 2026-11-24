@@ -2,7 +2,7 @@ import { useId, useState, type FormEvent } from 'react'
 import { useI18n } from '../lib/i18n'
 
 /** E-mail que recebe os pedidos de aviso. Definido por VITE_CONTACT_EMAIL (sem backend por agora). */
-const CONTACT = import.meta.env.VITE_CONTACT_EMAIL as string | undefined
+const CONTACT = (import.meta.env.VITE_CONTACT_EMAIL as string | undefined) || 'noesisteaches@gmail.com'
 const STORE = 'noesis-craft-notify'
 
 /** Captura simples sem backend: abre um e-mail (mailto) se houver destino configurado; guarda sempre no dispositivo. */
