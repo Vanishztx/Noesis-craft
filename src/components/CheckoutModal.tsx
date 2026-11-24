@@ -37,7 +37,6 @@ export default function CheckoutModal({ product, open, onClose }: { product: Pro
   }
   const plan = planIdOf(product.checkoutUrl)
   const cover = coverOf(product, lang)
-  const tab = product.category === 'infantil' ? '#8FD0E8' : '#F2B63F'
   const onFail = useCallback(() => setFailed(true), [])
 
   useEffect(() => {
@@ -111,22 +110,20 @@ export default function CheckoutModal({ product, open, onClose }: { product: Pro
         aria-modal="true"
         aria-labelledby="co-title"
         className="co-dialog"
-        style={{ ['--co-shadow' as string]: tab }}
       >
         <span className="tape -top-3 left-10 rotate-[-4deg]" aria-hidden="true" />
         <header className="co-head">
           {cover && <img src={cover.src} alt="" width={56} height={75} className="co-thumb" />}
           <div className="min-w-0 flex-1">
-            <p className="eyebrow">{t('checkout.eyebrow')}</p>
-            <h2 id="co-title" className="truncate text-xl sm:text-2xl">
+            <p className="co-eyebrow">{t('checkout.eyebrow')}</p>
+            <h2 id="co-title" className="co-title">
               {pick(product.name)}
             </h2>
-            <p className="mt-0.5 leading-tight">
-              <span className="text-lg font-semibold">{formatCve(product.priceCve, lang)}</span>{' '}
-              <span className="text-xs text-muted">≈ {formatUsd(product.priceUsd, lang)} USD</span>
+            <p className="co-sub">
+              {pick(product.headline)} · <strong>{formatCve(product.priceCve, lang)}</strong> (≈ {formatUsd(product.priceUsd, lang)} USD)
             </p>
           </div>
-          <button type="button" data-autofocus className="round-btn shrink-0" onClick={onClose} aria-label={t('checkout.close')}>
+          <button type="button" data-autofocus className="round-btn shrink-0 self-start" onClick={onClose} aria-label={t('checkout.close')}>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" strokeWidth="2" />
             </svg>
@@ -147,14 +144,18 @@ export default function CheckoutModal({ product, open, onClose }: { product: Pro
               <p className="font-semibold">{t('checkout.fail.title')}</p>
               <p className="mt-1 text-sm text-muted">{t('checkout.fail.text')}</p>
               <a href={product.checkoutUrl} target="_blank" rel="noopener noreferrer" className="btn btn-amber mt-4">
-                {t('checkout.alt')}
+                {t('checkout.alt')} ↗
               </a>
             </div>
           )}
         </div>
 
         <footer className="co-foot">
-          <a href={product.checkoutUrl} target="_blank" rel="noopener noreferrer" className="pencil-link text-sm font-semibold">
+          <p className="co-secure">
+            <span className="co-dot" aria-hidden="true" />
+            {t('checkout.secure')}
+          </p>
+          <a href={product.checkoutUrl} target="_blank" rel="noopener noreferrer" className="co-alt">
             {t('checkout.alt')} <span aria-hidden="true">↗</span>
           </a>
         </footer>
