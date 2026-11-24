@@ -733,7 +733,7 @@ a.kid-card.kid-live {
   color: inherit;
 }
 .kid-card input::placeholder, .email-input::placeholder {
-  color: #5c5b6a;
+  color: #6b6a78;
   opacity: 1;
 }
 /* Grelha de temas: 1 coluna (mobile), 2 (tablet, ultimo impar ocupa a largura), 6 "meias-colunas" (desktop: 3+2, 2+2, 3...) */
@@ -749,14 +749,18 @@ a.kid-card.kid-live {
   .kid-themes > li {
     grid-column: span 2;
   }
-  .kid-themes[data-n='1'] > li,
-  .kid-themes[data-n='2'] > li,
-  .kid-themes[data-n='4'] > li,
-  .kid-themes[data-n='5'] > li:nth-child(n + 4) {
-    grid-column: span 3;
-  }
   .kid-themes[data-n='1'] > li {
     grid-column: 2 / span 4;
+  }
+  .kid-themes[data-n='2'] > li:nth-child(1),
+  .kid-themes[data-n='4'] > li:nth-child(odd),
+  .kid-themes[data-n='5'] > li:nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+  .kid-themes[data-n='2'] > li:nth-child(2),
+  .kid-themes[data-n='4'] > li:nth-child(even),
+  .kid-themes[data-n='5'] > li:nth-child(5) {
+    grid-column: 4 / span 2;
   }
 }
 .kid-card-head {
@@ -860,7 +864,7 @@ a.kid-card:focus-visible .kid-glyph {
 }
 
 .email-input::placeholder {
-  color: #5c5b6a;
+  color: #6b6a78;
   opacity: 1;
 }
 .email-error {
@@ -1083,7 +1087,7 @@ a.kid-card:focus-visible .kid-glyph {
 .co-dialog {
   position: relative;
   width: 100%;
-  max-width: 34rem;
+  max-width: 28rem;
   max-height: 100dvh;
   display: flex;
   flex-direction: column;
@@ -1119,6 +1123,11 @@ a.kid-card:focus-visible .kid-glyph {
   overflow-y: auto;
   padding: 1.25rem;
 }
+@media (min-width: 640px) {
+  .co-body {
+    min-height: min(34rem, calc(100dvh - 14rem));
+  }
+}
 .co-loading {
   padding: 3rem 0;
   text-align: center;
@@ -1146,11 +1155,16 @@ a.kid-card:focus-visible .kid-glyph {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #4e8b78;
+  color: #3d7261;
 }
 .co-eyebrow::before { content: '— '; }
 .co-title { font-size: 1.25rem; font-weight: 700; line-height: 1.2; margin-top: 0.15rem; }
 .co-sub { font-size: 0.75rem; color: var(--color-ink-2); margin-top: 0.2rem; }
+@media (max-width: 479.98px) {
+  .co-sep { display: none; }
+  .co-price { display: block; }
+  .co-foot { justify-content: flex-start; font-size: 0.8125rem; }
+}
 .co-secure { display: flex; align-items: center; gap: 0.5rem; color: var(--color-ink-2); }
 .co-dot { width: 0.5rem; height: 0.5rem; border-radius: 9999px; background: #4e8b78; }
 .co-alt { font-weight: 700; color: var(--color-ink); }
@@ -1166,4 +1180,12 @@ a.kid-card:focus-visible .kid-glyph {
 }
 @media (prefers-reduced-motion: reduce) {
   .co-backdrop, .co-dialog, .co-loading { animation: none; }
+}
+
+/* Hero mobile estreito: esconde os dois cartoes secundarios da colagem para nao cortar etiquetas */
+@media (max-width: 399.98px) {
+  .brand-art .art-mint,
+  .brand-art .art-lilac {
+    display: none;
+  }
 }

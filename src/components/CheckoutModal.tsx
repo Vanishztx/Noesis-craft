@@ -120,7 +120,11 @@ export default function CheckoutModal({ product, open, onClose }: { product: Pro
               {pick(product.name)}
             </h2>
             <p className="co-sub">
-              {pick(product.headline)} · <strong>{formatCve(product.priceCve, lang)}</strong> (≈ {formatUsd(product.priceUsd, lang)} USD)
+              {pick(product.headline)}
+              <span className="co-sep" aria-hidden="true"> · </span>
+              <span className="co-price">
+                <strong>{formatCve(product.priceCve, lang)}</strong> (≈ {formatUsd(product.priceUsd, lang)} USD)
+              </span>
             </p>
           </div>
           <button type="button" data-autofocus className="round-btn shrink-0 self-start" onClick={onClose} aria-label={t('checkout.close')}>

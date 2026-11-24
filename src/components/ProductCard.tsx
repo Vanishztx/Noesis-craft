@@ -43,7 +43,7 @@ export default function ProductCard({
       <div className={`bg-paper-2 p-4 sm:p-5 ${wide ? 'md:w-[46%] md:shrink-0 md:p-8' : 'pb-0 sm:pb-0'}`}>
         <div className="card-cover relative aspect-[3/4] overflow-hidden border border-ink/15 bg-white">
           {cover ? (
-            <img src={cover.src} alt={pick(cover.alt)} loading="lazy" width={900} height={1200} className="h-full w-full object-cover" />
+            <img src={cover.src} alt={pick(cover.alt)} loading="lazy" width={900} height={1200} className={`h-full w-full ${wide ? 'object-contain object-top' : 'object-cover'}`} />
           ) : (
             <div className="grid h-full place-items-center px-4 text-center text-sm text-muted">{pick(product.name)}</div>
           )}

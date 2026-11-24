@@ -78,7 +78,7 @@ function Hero() {
   const { t } = useI18n()
   return (
     <section className="relative">
-      <div className="container-x grid items-center gap-12 pb-20 pt-8 md:pb-28 md:pt-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:pb-32">
+      <div className="container-x grid items-center gap-12 pb-16 pt-8 md:pt-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
         <div>
           <p className="eyebrow rise">{t('hero.eyebrow')}</p>
           <h1 className="mt-6 text-[2.6rem] sm:text-6xl lg:text-[4.4rem]">
@@ -133,20 +133,19 @@ function PreviewSheet({ label, kind, i }: { label: string; kind: 'planners' | 't
       </div>
       <div className="mt-5 space-y-2.5" aria-hidden="true">
         {kind === 'planners' ? (
-          [0, 1, 2, 3].map((n) => (
+          [0, 1].map((n) => (
             <span key={n} className="flex items-center gap-2.5">
-              <span className="h-3.5 w-3.5 shrink-0 border-2 border-ink" />
-              <span className="h-1.5 bg-ink/15" style={{ width: `${88 - n * 14}%` }} />
+              <span className="h-3.5 w-3.5 shrink-0 border-2" style={{ borderColor: 'var(--row-accent)' }} />
+              <span className="h-1.5" style={{ width: `${88 - n * 20}%`, background: 'var(--row-accent)', opacity: 0.35 }} />
             </span>
           ))
         ) : (
           <>
             <span className="block h-5" style={{ background: 'var(--row-accent)' }} />
             <span className="grid grid-cols-3 gap-2">
-              <span className="h-10 bg-ink/10" />
-              <span className="col-span-2 h-10 bg-ink/15" />
+              <span className="h-10" style={{ background: 'var(--row-accent)', opacity: 0.35 }} />
+              <span className="col-span-2 h-10" style={{ background: 'var(--row-accent)', opacity: 0.2 }} />
             </span>
-            <span className="block h-1.5 w-3/4 bg-ink/15" />
           </>
         )}
       </div>
@@ -173,7 +172,7 @@ function CatalogRow({ tab, delay }: { tab: Tab; delay: number }) {
   const themesNext = tab === 'infantil' ? THEMES.filter((th) => !(state.status === 'ready' && state.data.some((p) => p.theme === th.id))) : []
 
   const aside = (
-    <aside className="cat-aside sheet bob h-full p-6" style={{ ['--r' as string]: '0.8deg', rotate: '0.8deg' }}>
+    <aside className="cat-aside sheet bob self-start p-6" style={{ ['--r' as string]: '0.8deg', rotate: '0.8deg' }}>
       <span className="kid-star twinkle absolute -right-3 -top-3 h-9 w-9 bg-amber" aria-hidden="true" />
       <h4 className="text-lg font-semibold">{t('cat.next.title')}</h4>
       <ul className="mt-4 flex flex-wrap gap-2">

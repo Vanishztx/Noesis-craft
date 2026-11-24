@@ -102,7 +102,7 @@ export default function Infantil() {
       </section>
 
       <section id="temas" className="container-x relative scroll-mt-24 pt-14" aria-labelledby="temas-h">
-        <div aria-hidden="true" className="pointer-events-none absolute right-6 top-10 hidden sm:block">
+        <div aria-hidden="true" className="pointer-events-none absolute right-6 top-10 hidden opacity-50 sm:block">
           <Cloud className="bob w-16" />
           <span className="kid-star twinkle absolute -left-8 top-8 h-6 w-6 bg-coral" />
         </div>
