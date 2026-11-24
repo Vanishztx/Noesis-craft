@@ -633,3 +633,150 @@ main:focus-visible {
     display: none;
   }
 }
+
+/* ---------- Infantil: cores e formas lúdicas, mesmo papel ---------- */
+.kids {
+  --color-sky: #8fd0e8;
+  --color-coral: #f4896b;
+  --color-lilac: #c3b3ee;
+  --color-mint: #9bd8bf;
+  --kid-sky: #8fd0e8;
+  --kid-coral: #f4896b;
+  --kid-lilac: #c3b3ee;
+  --kid-mint: #9bd8bf;
+}
+@theme {
+  --color-sky: #8fd0e8;
+  --color-coral: #f4896b;
+  --color-lilac: #c3b3ee;
+  --color-mint: #9bd8bf;
+}
+.kids-hero {
+  background: #fff4d6;
+  background-image: radial-gradient(circle at 12% 20%, rgb(143 208 232 / 0.45) 0 7rem, transparent 7.1rem), radial-gradient(circle at 92% 80%, rgb(195 179 238 / 0.5) 0 6rem, transparent 6.1rem), var(--grain);
+}
+.kid-eyebrow {
+  display: inline-block;
+  padding: 0.3rem 0.9rem;
+  border-radius: 9999px;
+  background: var(--kid-coral);
+  color: var(--color-ink);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transform: rotate(-2deg);
+}
+.kid-mark {
+  background: linear-gradient(transparent 62%, var(--color-amber) 62% 92%, transparent 92%);
+  padding-inline: 0.1em;
+}
+.kid-blob {
+  border-radius: 62% 38% 55% 45% / 48% 58% 42% 52%;
+}
+.kid-star {
+  clip-path: polygon(50% 0, 62% 35%, 98% 38%, 69% 59%, 80% 95%, 50% 73%, 20% 95%, 31% 59%, 2% 38%, 38% 35%);
+}
+.kid-sticker {
+  border: 6px solid #fff;
+  border-radius: 1.5rem;
+  box-shadow: 0 1px 1px rgb(20 19 30 / 0.08), 0 16px 28px -14px rgb(20 19 30 / 0.4);
+  overflow: hidden;
+  transition: transform 0.4s var(--ease);
+}
+.kid-sticker:hover {
+  transform: rotate(-1deg) scale(1.02);
+}
+.btn-kid {
+  border-radius: 9999px;
+  clip-path: none;
+}
+.kid-pill {
+  min-height: 2.75rem;
+  padding: 0.5rem 1.25rem;
+  border: 2px solid var(--color-ink);
+  border-radius: 9999px;
+  background: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s var(--ease);
+}
+.kid-pill:hover {
+  transform: translateY(-2px);
+}
+.kid-pill[aria-pressed='true'] {
+  background: var(--color-amber);
+  box-shadow: 3px 3px 0 var(--color-ink);
+}
+.kid-panel {
+  border: 2px dashed var(--color-ink);
+  border-radius: 1.75rem;
+  background: #fff;
+}
+.kid-card {
+  position: relative;
+  padding: 1.75rem 1.5rem 1.5rem;
+  border: 2px dashed var(--color-ink);
+  border-radius: 1.75rem;
+  background: var(--card-bg, #fff);
+  transition: transform 0.4s var(--ease);
+}
+.kid-card:hover {
+  transform: rotate(-0.8deg) translateY(-3px);
+}
+.kid-card.tone-sky { --card-bg: #e3f4fa; --glyph: var(--kid-sky); }
+.kid-card.tone-coral { --card-bg: #fde6de; --glyph: var(--kid-coral); }
+.kid-card.tone-mint { --card-bg: #e2f5ec; --glyph: var(--kid-mint); }
+.kid-card.tone-lilac { --card-bg: #eee9fb; --glyph: var(--kid-lilac); }
+.kid-card.tone-amber { --card-bg: #fff1cc; --glyph: var(--color-amber); }
+.kid-glyph {
+  display: grid;
+  place-items: center;
+  width: 4.25rem;
+  height: 4.25rem;
+  margin-bottom: 1rem;
+  border-radius: 58% 42% 52% 48% / 46% 54% 46% 54%;
+  background: var(--glyph);
+  font-size: 1.4rem;
+  font-weight: 700;
+  transform: rotate(-6deg);
+}
+.kid-tag {
+  padding: 0.15rem 0.65rem;
+  border-radius: 9999px;
+  border: 1.5px solid var(--color-ink);
+  background: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.kid-tag-live {
+  background: var(--color-ink);
+  color: #fff;
+}
+.kid-topic {
+  padding: 0.3rem 0.8rem;
+  border-radius: 9999px;
+  background: #fff;
+  border: 1px solid rgb(20 19 30 / 0.25);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.nav-soon {
+  margin-left: 0.4rem;
+  padding: 0.05rem 0.4rem;
+  border: 1px solid currentColor;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+@media (prefers-reduced-motion: reduce) {
+  .kid-card:hover,
+  .kid-sticker:hover,
+  .kid-pill:hover {
+    transform: none;
+  }
+}

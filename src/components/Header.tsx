@@ -92,6 +92,9 @@ export default function Header() {
   const links = [
     { to: '/', label: t('nav.home'), end: true },
     { to: '/produtos', label: t('nav.products'), end: false },
+    { to: '/infantil', label: t('nav.kids'), end: false },
+    { to: '/planners', label: t('nav.planners'), end: false, soon: true },
+    { to: '/templates', label: t('nav.templates'), end: false, soon: true },
   ]
   const hide = hidden && !open
 
@@ -111,10 +114,11 @@ export default function Header() {
             </span>
           </Link>
 
-          <nav aria-label={t('nav.main')} className="hidden items-center gap-7 md:flex">
+          <nav aria-label={t('nav.main')} className="hidden items-center gap-4 md:flex lg:gap-6">
             {links.map((l) => (
               <NavLink key={l.to} to={l.to} end={l.end} className="nav-link pencil-link">
                 {l.label}
+                {l.soon && <span className="nav-soon">{t('soon.badge')}</span>}
               </NavLink>
             ))}
             <a href="/#sobre" className="nav-link pencil-link">
@@ -146,7 +150,7 @@ export default function Header() {
 
       <nav id="mobile-nav" ref={panelRef} aria-label={t('nav.main')} data-open={open} inert={!open} className="menu-panel md:hidden">
         <ul className="container-x flex flex-col pt-6">
-          {[...links, { to: '/#sobre', label: t('nav.about'), end: false }].map((l, i) => {
+          {[...links, { to: '/#sobre', label: t('nav.about'), end: false, soon: false }].map((l, i) => {
             const num = String(i + 1).padStart(2, '0')
             return (
               <li key={l.to} className="menu-item border-b border-ink/15" style={{ ['--i' as string]: i }}>
@@ -163,6 +167,7 @@ export default function Header() {
                         <span className={isActive ? 'mark' : ''} style={isActive ? { animation: 'none' } : undefined}>
                           {l.label}
                         </span>
+                        {l.soon && <span className="nav-soon">{t('soon.badge')}</span>}
                       </>
                     )}
                   </NavLink>
@@ -171,7 +176,7 @@ export default function Header() {
             )
           })}
         </ul>
-        <p className="menu-item container-x mt-auto pb-8 text-sm text-muted" style={{ ['--i' as string]: 4 }}>
+        <p className="menu-item container-x mt-auto pb-8 text-sm text-muted" style={{ ['--i' as string]: links.length + 1 }}>
           {t('footer.tag')}
         </p>
       </nav>

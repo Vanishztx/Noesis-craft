@@ -6,6 +6,8 @@ import PageTransition from './components/PageTransition'
 import Home from './pages/Home'
 import Products from './pages/Products'
 import ProductDetail from './pages/ProductDetail'
+import Infantil from './pages/Infantil'
+import EmBreve from './pages/EmBreve'
 import NotFound from './pages/NotFound'
 import { useI18n } from './lib/i18n'
 
@@ -46,6 +48,9 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/produtos" element={<Products />} />
           <Route path="/produtos/:slug" element={<ProductDetail />} />
+          <Route path="/infantil" element={<Infantil />} />
+          <Route path="/planners" element={<EmBreve which="planners" />} />
+          <Route path="/templates" element={<EmBreve which="templates" />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

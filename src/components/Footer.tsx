@@ -48,6 +48,21 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/infantil" className="pencil-link inline-block py-2.5">
+                  {t('nav.kids')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/planners" className="pencil-link inline-block py-2.5">
+                  {t('nav.planners')} · {t('soon.badge')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/templates" className="pencil-link inline-block py-2.5">
+                  {t('nav.templates')} · {t('soon.badge')}
+                </Link>
+              </li>
+              <li>
                 <a href="/#sobre" className="pencil-link inline-block py-2.5">
                   {t('nav.about')}
                 </a>

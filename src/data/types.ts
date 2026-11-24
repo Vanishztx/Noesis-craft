@@ -7,6 +7,13 @@ export type Lang = 'pt' | 'en'
 /** Texto nos dois idiomas. */
 export type Localized = { pt: string; en: string }
 
+/** Area da loja. Sem valor = loja geral. */
+export type ProductCategory = 'infantil' | 'planners' | 'templates'
+/** Faixas etarias da area Infantil. */
+export type AgeRange = '3-4' | '5-6' | '7+'
+/** Temas da area Infantil. */
+export type InfantilTheme = 'alfabetizacao' | 'numeros' | 'descobertas' | 'artes' | 'datas'
+
 export type ProductStatus = 'published' | 'draft' | 'archived'
 
 export type ProductImage = {
@@ -50,6 +57,12 @@ export type Product = {
   checkoutUrl: string
   /** Pagina do produto na Whop (opcional). */
   storeUrl?: string
+  /** Opcional: area da loja (ex.: 'infantil'). */
+  category?: ProductCategory
+  /** Opcional (infantil): idades recomendadas. */
+  ageRange?: AgeRange[]
+  /** Opcional (infantil): tema principal. */
+  theme?: InfantilTheme
   /** ISO 8601. */
   publishedAt: string
   status: ProductStatus
